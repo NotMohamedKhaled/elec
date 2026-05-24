@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Failed – ElectroHub</title>
+    <link rel="stylesheet" href="CSS/shared.css" />
+  </head>
+  <body style="display:flex; flex-direction:column; min-height:100vh;">
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation">
+      <div class="navbar-left">
+        <div class="logo">Electro<span>Hub</span></div>
+      </div>
+      <div class="navbar-right">
+        <a href="home.html" style="color:var(--text); text-decoration:none;">Go to Home</a>
+      </div>
+    </nav>
+
+    <main id="main-content" style="flex:1; display:flex; justify-content:center; align-items:center; padding: 40px 20px;">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:40px; text-align:center; max-width:400px; width:100%;">
+        <div style="font-size: 48px; margin-bottom: 16px;">❌</div>
+        <h1 style="margin-bottom: 8px;">Payment Failed</h1>
+        <p style="color:var(--text-muted); margin-bottom: 24px;">Your payment was cancelled or declined. No charges were made.</p>
+        <button class="btn-primary" onclick="window.location.href='checkout.html'" style="width:100%; justify-content:center; margin-bottom: 12px;">Try Again</button>
+        <button class="btn-secondary" onclick="window.location.href='cart.html'" style="width:100%; justify-content:center;">Return to Cart</button>
+      </div>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="footer-logo">Electro<span>Hub</span></div>
+      <p>© 2026 ElectroHub – All rights reserved</p>
+    </footer>
+  </body>
+</html>

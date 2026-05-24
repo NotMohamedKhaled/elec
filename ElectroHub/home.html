@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElectroHub – Shop Electronics Online</title>
+    <link rel="stylesheet" href="CSS/shared.css" />
+    <link rel="stylesheet" href="CSS/home.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar-left">
+        <div class="logo">Electro<span>Hub</span></div>
+        <ul class="nav-links" role="list">
+          <li>
+            <a href="home.html" class="active" aria-current="page">Home</a>
+          </li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li class="auth-nav-link"><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <button
+          class="search-toggle-btn"
+          aria-label="Search products"
+          aria-expanded="false"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          Search
+        </button>
+        <a href="cart.html" class="cart-btn" aria-label="View cart">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          Cart <span class="cart-count" aria-live="polite">0</span>
+        </a>
+        <button
+          class="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- SEARCH OVERLAY -->
+    <div
+      id="search-overlay"
+      class="search-overlay"
+      role="search"
+      aria-label="Product search"
+    >
+      <div class="search-box">
+        <div class="search-input-row">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search by product name or category…"
+            autocomplete="off"
+            aria-label="Search products"
+          />
+          <button
+            id="search-close"
+            class="search-close-btn"
+            aria-label="Close search"
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          id="search-results"
+          class="search-results"
+          role="listbox"
+          aria-label="Search results"
+        ></div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="main-content" aria-labelledby="hero-title">
+      <h1 id="hero-title">
+        Upgrade Your<br /><span>Digital Life</span><br />with ElectroHub
+      </h1>
+      <p class="hero-sub">
+        Discover the latest gadgets – from laptops to headphones. Fast shipping
+        and secure checkout.
+      </p>
+      <div class="hero-actions">
+        <a href="products.html" class="btn-primary">Shop Now</a>
+        <button class="btn-secondary search-toggle-btn">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          Search Products
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>500+</strong><span>Products</span></div>
+         <div class="stat">
+          <strong>50k+</strong><span>Happy Customers</span>
+        </div>
+         <div class="stat"><strong>2h</strong><span>Delivery*</span></div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories-section" aria-label="Browse by category">
+      <div class="section-header">
+        <h2>Shop by Category</h2>
+      </div>
+      <div class="categories-row">
+        <button
+          class="category-chip active"
+          data-category="all"
+          onclick="filterFeatured('all', this)"
+        >
+          All
+        </button>
+        <button
+          class="category-chip"
+          data-category="Laptops"
+          onclick="filterFeatured('Laptops', this)"
+        >
+          Laptops
+        </button>
+        <button
+          class="category-chip"
+          data-category="Smartphones"
+          onclick="filterFeatured('Smartphones', this)"
+        >
+          Smartphones
+        </button>
+        <button
+          class="category-chip"
+          data-category="Audio"
+          onclick="filterFeatured('Audio', this)"
+        >
+          Audio
+        </button>
+        <button
+          class="category-chip"
+          data-category="Wearables"
+          onclick="filterFeatured('Wearables', this)"
+        >
+          Wearables
+        </button>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured-section" aria-labelledby="featured-title">
+      <div class="section-header">
+        <h2 id="featured-title">Featured Products</h2>
+        <a href="products.html" class="see-all">See all →</a>
+      </div>
+      <div
+        class="product-grid"
+        id="featured-grid"
+        role="list"
+        aria-label="Featured products"
+      >
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section" aria-labelledby="team-title">
+      <div class="section-header">
+        <h2 id="team-title">Meet Our Team</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-avatar">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <h3>Mohamed Behairy</h3>
+          <p class="member-role">Team Member</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <h3>Awsam Ahmed</h3>
+          <p class="member-role">Team Member</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <h3>Mohamed Khaled</h3>
+          <p class="member-role">Team Member</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <h3>Abdo Mohamed</h3>
+          <p class="member-role">Team Member</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <h3>Abdulrahman Amer</h3>
+          <p class="member-role">Team Member</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+      <div class="footer-logo">Electro<span>Hub</span></div>
+      <p>© 2026 ElectroHub – All rights reserved</p>
+    </footer>
+
+    <script src="JS/shared.js"></script>
+    <script src="JS/home.js"></script>
+  </body>
+</html>

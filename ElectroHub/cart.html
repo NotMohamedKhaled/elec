@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart – ElectroHub</title>
+  <link rel="stylesheet" href="CSS/shared.css">
+  <link rel="stylesheet" href="CSS/cart.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-left">
+    <div class="logo">Electro<span>Hub</span></div>
+    <ul class="nav-links" role="list">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="cart.html" class="active" aria-current="page">Cart</a></li>
+      <li class="auth-nav-link"><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+  <div class="navbar-right">
+    <button class="search-toggle-btn" aria-label="Search products">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Search
+    </button>
+    <a href="cart.html" class="cart-btn" aria-label="View cart">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Cart <span class="cart-count">0</span>
+    </a>
+    <button class="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay" class="search-overlay" role="search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search-input" placeholder="Search products…" autocomplete="off">
+      <button id="search-close" class="search-close-btn">✕</button>
+    </div>
+    <div id="search-results" class="search-results" role="listbox"></div>
+  </div>
+</div>
+
+<!-- MAIN CART -->
+<main class="cart-page" id="main-content" aria-labelledby="cart-title">
+  <div class="cart-layout">
+
+    <!-- ITEMS PANEL -->
+    <section class="cart-items-panel">
+      <div class="cart-header">
+        <h1 id="cart-title">Your Cart</h1>
+        <span class="cart-item-count" id="cart-item-count" aria-live="polite">0 items</span>
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="empty-cart" id="empty-cart" style="display:none;" role="status">
+        <div class="empty-icon">🛒</div>
+        <h3>Your cart is empty</h3>
+        <p>Add some products to get started</p>
+        <a href="products.html" class="btn-primary">Browse Products</a>
+      </div>
+
+      <!-- CART TABLE -->
+      <div id="cart-items-list" role="list" aria-label="Cart items">
+        <!-- Injected by JS -->
+      </div>
+
+      <div class="cart-actions" id="cart-actions" style="display:none;">
+        <a href="products.html" class="btn-secondary">+ Add More Products</a>
+        <button onclick="clearAllCart()" class="btn-clear" aria-label="Clear all cart items">Clear All</button>
+      </div>
+    </section>
+
+    <!-- SUMMARY PANEL -->
+    <aside class="cart-summary" aria-label="Order summary">
+      <h2>Order Summary</h2>
+
+      <div class="summary-lines" id="summary-lines">
+        <!-- Injected by JS -->
+      </div>
+
+      <div class="summary-divider"></div>
+
+      <div class="summary-total-row">
+        <span>Subtotal</span>
+        <span class="summary-subtotal" id="summary-subtotal">$0.00</span>
+      </div>
+
+      <div class="summary-total-row final">
+        <span>Total</span>
+        <span class="summary-total" id="summary-total">$0.00</span>
+      </div>
+
+      <button class="checkout-btn" id="checkout-btn" onclick="goCheckout()" aria-label="Proceed to checkout">
+        Proceed to Checkout →
+      </button>
+
+      <p class="summary-note">Secure checkout. Fast delivery.</p>
+    </aside>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-logo">Electro<span>Hub</span></div>
+  <p>© 2026 ElectroHub – All rights reserved</p>
+</footer>
+
+<script src="JS/shared.js"></script>
+<script src="JS/cart.js"></script>
+</body>
+</html>

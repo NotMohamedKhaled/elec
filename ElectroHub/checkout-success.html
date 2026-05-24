@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Success – ElectroHub</title>
+    <link rel="stylesheet" href="CSS/shared.css" />
+  </head>
+  <body style="display:flex; flex-direction:column; min-height:100vh;">
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation">
+      <div class="navbar-left">
+        <div class="logo">Electro<span>Hub</span></div>
+      </div>
+      <div class="navbar-right">
+        <a href="home.html" style="color:var(--text); text-decoration:none;">Go to Home</a>
+      </div>
+    </nav>
+
+    <main id="main-content" style="flex:1; display:flex; justify-content:center; align-items:center; padding: 40px 20px;">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:40px; text-align:center; max-width:400px; width:100%;">
+        <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
+        <h1 style="margin-bottom: 8px;">Payment Successful!</h1>
+        <p id="status-text" style="color:var(--text-muted); margin-bottom: 24px;">Confirming your payment...</p>
+        <button class="btn-primary" onclick="window.location.href='orders.html'" style="width:100%; justify-content:center; display:none;" id="orders-btn">View My Orders</button>
+      </div>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="footer-logo">Electro<span>Hub</span></div>
+      <p>© 2026 ElectroHub – All rights reserved</p>
+    </footer>
+
+    <script src="JS/shared.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const params = new URLSearchParams(window.location.search);
+        const sessionId = params.get("session_id");
+        const statusEl = document.getElementById("status-text");
+        const btn = document.getElementById("orders-btn");
+
+        if (!sessionId) {
+          statusEl.textContent = "Payment session not found.";
+          return;
+        }
+
+        try {
+          const res = await fetchWithAuth(`${API_BASE_URL}/checkout/complete-session`, {
+            method: 'POST',
+            body: JSON.stringify({ sessionId })
+          });
+          
+          if (res.ok) {
+            statusEl.textContent = "Your payment has been confirmed and your order is now processing.";
+            // Clear cart upon successful payment confirmation
+            localStorage.removeItem("electrohub_cart");
+          } else {
+            statusEl.textContent = "We received your payment, but there was an issue verifying it. Please contact support.";
+          }
+        } catch (e) {
+          console.error(e);
+          statusEl.textContent = "Network error verifying payment.";
+        }
+        btn.style.display = "flex";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders – ElectroHub</title>
+    <link rel="stylesheet" href="CSS/shared.css" />
+    <style>
+      .orders-page {
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+        min-height: calc(100vh - 160px);
+      }
+      .order-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+      }
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .order-items {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+      }
+      .badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .badge.pending { background: #ffd70033; color: #ffd700; }
+      .badge.paid { background: #00ff0033; color: #00ff00; }
+      .badge.completed { background: #0088ff33; color: #0088ff; }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation">
+      <div class="navbar-left">
+        <div class="logo">Electro<span>Hub</span></div>
+        <ul class="nav-links" role="list">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li class="auth-nav-link"><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <button class="search-toggle-btn">Search</button>
+        <a href="cart.html" class="cart-btn">Cart <span class="cart-count">0</span></a>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="orders-page" id="main-content">
+      <h1>My Orders</h1>
+      <p style="color:var(--text-muted); margin-bottom: 32px;">View your order history.</p>
+      
+      <div id="orders-list">
+        <p>Loading orders...</p>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+      <div class="footer-logo">Electro<span>Hub</span></div>
+      <p>© 2026 ElectroHub – All rights reserved</p>
+    </footer>
+
+    <script src="JS/shared.js"></script>
+    <script src="JS/orders.js"></script>
+  </body>
+</html>
