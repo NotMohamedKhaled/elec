@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+jspm_packages/
+web_modules/
+
+# Local Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# App Uploads / Media (Keeps users' uploaded images local)
+backend/uploads/*
+# If you want to keep the uploads folder structure but ignore the files inside, 
+# uncomment the line below:
+# !backend/uploads/.gitkeep
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+uploads/*
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and Code Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp   

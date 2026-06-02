@@ -114,52 +114,29 @@ if (!orderRes.ok) {
   return;
 }
 
-// 2. Redirect straight to success page!
-// cart=[]
-localStorage.removeItem('electrohub_cart');
-window.location.href = "checkout-success.html";
-
-// // 2. Mock Payment
-// const mockOrderRes = await fetchWithAuth(`${API_BASE_URL}/orders/${orderData.order._id}/pay`, {
-//   method: "PUT"
-// });
-
-// const mockOrderData = await mockOrderRes.json();
-// console.log("Payment Response:", mockOrderData); // 👈 Debugging log
-
-// if (!mockOrderRes.ok) {
-//   // 👈 This will now tell you exactly WHY the backend rejected it (e.g., 404 or 500)
-//   alert(mockOrderData.error || "Failed to process payment"); 
-//   btn.disabled = false;
-//   btn.textContent = "Proceed to Payment";
-//   window.location.href = "checkout-failed.html";
-//   return;
-// }
-
-// If everything succeeds redirect to success page
-window.location.href = "checkout-success.html";
     // 2. Create Stripe Session
-    // const sessionRes = await fetchWithAuth(`${API_BASE_URL}/checkout/create-session`, {
-    //   method: "POST",
-    //   body: JSON.stringify({ orderId: orderData.orderId || orderData.order._id || orderData._id })
-    // });
+    const sessionRes = await fetchWithAuth(`${API_BASE_URL}/checkout/create-session`, {
+      method: "POST",
+      body: JSON.stringify({ orderId: orderData.orderId || orderData.order._id || orderData._id })
+    });
 
-    // const sessionData = await sessionRes.json();
+    const sessionData = await sessionRes.json();
 
-    // if (!sessionRes.ok) {
-    //   alert(sessionData.error || "Failed to initiate payment");
-    //   btn.disabled = false;
-    //   btn.textContent = "Proceed to Payment";
-    //   return;
-    // }
+    if (!sessionRes.ok) {
+      alert(sessionData.error || "Failed to initiate payment");
+      btn.disabled = false;
+      btn.textContent = "Proceed to Payment";
+      return;
+    }
 
-    // if (sessionData.url) {
-    //   window.location.href = sessionData.url;
-    // } else {
-    //   alert("No redirect URL provided by Stripe.");
-    //   btn.disabled = false;
-    //   btn.textContent = "Proceed to Payment";
-    // }
+    if (sessionData.url) {
+      // Redirect to Stripe Checkout page
+      window.location.href = sessionData.url;
+    } else {
+      alert("No redirect URL provided by Stripe.");
+      btn.disabled = false;
+      btn.textContent = "Proceed to Payment";
+    }
 
   } catch (e) {
     console.error(e);

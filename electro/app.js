@@ -19,7 +19,7 @@ app.use(
 );app.use(compression());
 app.use(cors(
   {
-    origin: 'http://localhost:5500',
+    origin: ['http://localhost:5000','http://127.0.0.1:5500'],
     credentials: true,
   }
 ));
